@@ -1,0 +1,5 @@
+# vCenter Login Information
+vcenter_hostname: "vcsa-01a.corp.local"
+vcenter_username: "administrator@vsphere.local"
+vcenter_password: "VMware1!"
+vcenter_validate_certs: "false"
