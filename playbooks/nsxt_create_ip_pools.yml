@@ -11,46 +11,14 @@
         hostname: "{{ nsx_hostname }}"
         username: "{{ nsx_username }}"
         password: "{{ nsx_password }}"
-      loop: "{{ ip_pools }}"
-      loop_control:
-        label: "{{ item.display_name }}"
-    - name: Display Results
-      debug:
-        var: ip_pool_result
-
+        validate_certs: "{{ validate_certs }}"
+        display_name: "{{ item.display_name }}"
+        pool_static_subnets: "{{ item.pool_static_subnets }}"
+        state: "{{ state }}"
+      with_items:
+        - "{{ ip_pools  }}"
       register: nsx_ip_pool_result
 
     - name: Display Result
       debug:
         var: ip_pool_result
-
-
-#---
-### Deploys an NSX-T environment
-#- hosts: nsxmgr
-#  connection: local
-#  become: yes
-#  gather_facts: False
-#  vars_files:
-#    - nsx_config.yaml
-#  tasks:
-#    - name: Create ip pool
-#      vmware.ansible_for_nsxt.nsxt_policy_ip_pool:
-#        hostname: "{{nsx_hostname}}"
-#        username: "{{nsx_username}}"
-#        password: "{{nsx_password}}"
-#        validate_certs: False
-#        display_name: "{{item.pool_display_name}}"
-#        pool_static_subnets:
-#          - id: test
-#            state: "present"
-#            subnets: "{{item.subnets}}"
-#        state: present
-#      with_items:
-#        - "{{ip_pools}}"
-#
-##- name: Create NSX-T IP Pools
-##  include_role: create_ip_pool.yml
-##  loop: "{{ ip_pools }}"
-##  loop_control:
-##    loop_var: ippool
