@@ -21,4 +21,4 @@
 
     - name: Display Result
       debug:
-        var: ip_pool_result
+        var: nsx_ip_pool_result
