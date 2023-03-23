@@ -1,6 +1,6 @@
 ---
 - name: Create NSX-T IP Pool
-  hosts: nsx_manager
+  hosts: nsxmgr
   gather_facts: no
   tasks:
     - name: Create NSX-T IP Pool
