@@ -2,12 +2,9 @@
 - name: Create NSX-T IP Pool
   hosts: nsx_manager
   gather_facts: no
-
-
-
   tasks:
     - name: Create NSX-T IP Pool
-      nsxt_ip_pool:
+      vmware.ansible_for_nsxt.nsxt_policy_ip_pool:
         nsx_manager_hostname: "{{ nsx_manager_hostname }}"
         nsx_manager_username: "{{ nsx_manager_username }}"
         nsx_manager_password: "{{ nsx_manager_password }}"
@@ -33,7 +30,7 @@
 
     - name: Display Result
       debug:
-        var: nsx_ip_pool_result
+        var: vmware.ansible_for_nsxt.nsxt_policy_ip_pool
 
 
 #---
