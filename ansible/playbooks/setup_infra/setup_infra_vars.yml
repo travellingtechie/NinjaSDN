@@ -1,4 +1,3 @@
----
 # Copyright 2018 VMware, Inc.
 # SPDX-License-Identifier: BSD-2-Clause OR GPL-3.0-only
 #
@@ -23,21 +22,22 @@
   #
   # Common NSX Appliance variables
   #
-
+  "nsx_username": "admin",
+  "nsx_password": "myPassword1!myPassword1!",
   "validate_certs": False,
 
   #
   # First NSX appliance node. Defined separate based on the consumption.
   # Accepts both IP (IPv4) and FQDN for 'mgmt_ip'
   #
-#  "nsx_node1": {
-#    "hostname": "mynsx-01.mylab.local",
-#    "mgmt_ip": "10.114.200.41",
-#    "datacenter": "Datacenter",
-#    "cluster": "Management",
-#    "datastore": "datastore36",
-#    "portgroup": "VM Network"
-#  },
+  "nsx_node1": {
+    "hostname": "mynsx-01.mylab.local",
+    "mgmt_ip": "10.114.200.41",
+    "datacenter": "Datacenter",
+    "cluster": "Management",
+    "datastore": "datastore36",
+    "portgroup": "VM Network"
+  },
 
   "transport_zones": [
     {
@@ -56,19 +56,19 @@
 
   "ip_pools": [
     {
-      "display_name": "TEP-IP-Pool",
+      "display_name": "to-del-TEP-IP-Pool",
       "pool_static_subnets": [
         {
           "display_name": "TEP_ip_pool_subnet",
           "state": "present",
           "allocation_ranges": [
             {
-              "start": "192.168.140.101",
-              "end": "192.168.140.200"
+              "start": "172.16.227.50",
+              "end": "172.16.227.59"
             }
           ],
-          "gateway_ip": "192.168.140.1",
-          "cidr": "192.168.140.0/24"
+          "gateway_ip": "172.16.227.1",
+          "cidr": "172.16.227.0/24"
         }
       ]
     }
@@ -308,4 +308,3 @@
     }
   ]
 }
-
