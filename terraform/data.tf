@@ -1,16 +1,16 @@
 # Create the data sources we will need to refer to
 
-data "nsxt_policy_transport_zone" "overlay_tz" {
-    display_name = "${var.nsx_data_vars["transport_zone"]}"
-}
-
-data "nsxt_policy_tier0_gateway" "tier0_router" {
-  display_name = "${var.nsx_data_vars["t0_router_name"]}"
-}
-
-data "nsxt_policy_edge_cluster" "edge_cluster1" {
-    display_name = "${var.nsx_data_vars["edge_cluster"]}"
-}
+#data "nsxt_policy_transport_zone" "overlay_tz" {
+#    display_name = "${var.nsx_data_vars["transport_zone"]}"
+#}
+#
+#data "nsxt_policy_tier0_gateway" "tier0_router" {
+#  display_name = "${var.nsx_data_vars["t0_router_name"]}"
+#}
+#
+#data "nsxt_policy_edge_cluster" "edge_cluster1" {
+#    display_name = "${var.nsx_data_vars["edge_cluster"]}"
+#}
 
 # Create data sources for some NSServices that we need to create FW rules
 data "nsxt_policy_service" "https" {
@@ -24,9 +24,9 @@ data "nsxt_policy_service" "mysql" {
 data "nsxt_policy_service" "ssh" {
   display_name = "SSH"
 }
-data "nsxt_policy_vm" "web-02a" {
-  display_name = "web-02a"
-}
+#data "nsxt_policy_vm" "web-02a" {
+#  display_name = "web-02a"
+#}
 #data "vsphere_datacenter" "dc" {
 #  name = "${var.vsphere["dc"]}"
 #}
