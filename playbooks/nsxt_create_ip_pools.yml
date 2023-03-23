@@ -6,34 +6,23 @@
   vars_files:
     - nsx_config.yaml
   tasks:
-    - name: Create NSX-T IP Pool
-      vmware.ansible_for_nsxt.nsxt_policy_ip_pool:
-        nsx_manager_hostname: "{{ nsx_manager_hostname }}"
-        nsx_manager_username: "{{ nsx_manager_username }}"
-        nsx_manager_password: "{{ nsx_manager_password }}"
-        display_name: "{{ item.name }}"
-        description: "NSX-T IP Pool"
-        prefix_length: 24
-        gateway: "{{ item.gateway }}"
-        allocation_ranges:
-          - start: "{{ item.start_ip }}"
-            end: "{{ item.end_ip }}"
-        dns_servers: "{{ item.dns_servers }}"
-        domain_name: "{{ item.domain_name }}"
-        pool_static_subnets:
-          - name: "{{ subnet.name }}"
-            prefix_length: "{{ subnet.prefix_length }}"
-            cidr: "{{ subnet.cidr }}"
-            dns_servers: "{{ subnet.dns_servers }}"
-            domain_name: "{{ subnet.domain_name }}"
-      with_items: "{{ ip_pools }}"
+    - name: Create IP Pools
+      vmware.nsxt_policy_ip_pool:
+        hostname: "{{ nsx_hostname }}"
+        username: "{{ nsx_username }}"
+        password: "{{ nsx_password }}"
+      loop: "{{ ip_pools }}"
       loop_control:
-        loop_var: item
+        label: "{{ item.display_name }}"
+    - name: Display Results
+      debug:
+        var: ip_pool_result
+
       register: nsx_ip_pool_result
 
     - name: Display Result
       debug:
-        var: vmware.ansible_for_nsxt.nsxt_policy_ip_pool
+        var: ip_pool_result
 
 
 #---
