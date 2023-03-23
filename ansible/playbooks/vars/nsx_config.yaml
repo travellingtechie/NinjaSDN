@@ -57,15 +57,15 @@
   "ip_pools": [
     {
       "display_name": "TEP-IP-Pool",
+      "tags": [
+        {
+          "tag": "automation",
+          "scope": "ansible"
+        }
       "pool_static_subnets": [
         {
           "display_name": "TEP_ip_pool_subnet",
           "state": "present",
-          "tags": [
-            {
-              "tag": "automation",
-              "scope": "ansible"
-            }
           ],
           "allocation_ranges": [
             {
