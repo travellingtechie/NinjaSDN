@@ -62,11 +62,11 @@
           "tag": "automation",
           "scope": "ansible"
         }
+      ],
       "pool_static_subnets": [
         {
           "display_name": "TEP_ip_pool_subnet",
           "state": "present",
-          ],
           "allocation_ranges": [
             {
               "start": "192.168.140.101",
