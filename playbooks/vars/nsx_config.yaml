@@ -1,27 +1,27 @@
  ---
-    ip_pools:
-      - name: "TEP_Pool"
-        start_ip: "192.168.140.101"
-        end_ip: "192.168.140.200"
-        gateway: "192.168.140.1"
+ip_pools:
+  - name: "TEP_Pool"
+    start_ip: "192.168.140.101"
+    end_ip: "192.168.140.200"
+    gateway: "192.168.140.1"
+    dns_servers:
+      - "192.168.110.10"
+    domain_name: "corp.local"
+    pool_static_subnets:
+      - name: "Subnet_1"
+        prefix_length: 24
+        cidr: "192.168.1.0/24"
         dns_servers:
-          - "192.168.110.10"
-        domain_name: "corp.local"
-        pool_static_subnets:
-          - name: "Subnet_1"
-            prefix_length: 24
-            cidr: "192.168.1.0/24"
-            dns_servers:
-              - "8.8.8.8"
-              - "8.8.4.4"
-            domain_name: "example.com"
-          - name: "Subnet_2"
-            prefix_length: 24
-            cidr: "192.168.2.0/24"
-            dns_servers:
-              - "8.8.8.8"
-              - "8.8.4.4"
-            domain_name: "example.com"
+          - "8.8.8.8"
+          - "8.8.4.4"
+        domain_name: "example.com"
+      - name: "Subnet_2"
+        prefix_length: 24
+        cidr: "192.168.2.0/24"
+        dns_servers:
+          - "8.8.8.8"
+          - "8.8.4.4"
+        domain_name: "example.com"
 #ip_pools:
 #  - pool_display_name: "TEP-Pool"
 #    subnets:
