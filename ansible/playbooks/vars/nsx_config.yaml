@@ -66,6 +66,7 @@
               "tag": "automation",
               "scope": "ansible"
             }
+          ],
           "allocation_ranges": [
             {
               "start": "192.168.140.101",
