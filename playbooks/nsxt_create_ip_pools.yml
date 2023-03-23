@@ -2,6 +2,9 @@
 - name: Create NSX-T IP Pool
   hosts: nsxmgr
   gather_facts: no
+  connection: local
+  vars_files:
+    - nsx_config.yaml
   tasks:
     - name: Create NSX-T IP Pool
       vmware.ansible_for_nsxt.nsxt_policy_ip_pool:
