@@ -2,18 +2,18 @@
 
 
 # Create T1 router
-resource "nsxt_policy_tier1_gateway" "tier1_gw" {
-  description                 = "Tier1 router provisioned by Terraform"
-  display_name                = "${var.nsx_rs_vars["t1_router_name"]}"
-  failover_mode               = "PREEMPTIVE"
-  edge_cluster_path            = "${data.nsxt_policy_edge_cluster.edge_cluster1.path}"
-  tier0_path                  = data.nsxt_policy_tier0_gateway.tier0_router.path
-  route_advertisement_types  = ["TIER1_STATIC_ROUTES","TIER1_CONNECTED","TIER1_NAT"]
-    tag {
-	scope = "${var.nsx_tag_scope}"
-	tag = "${var.nsx_tag}"
-    }
-}
+#resource "nsxt_policy_tier1_gateway" "tier1_gw" {
+#  description                 = "Tier1 router provisioned by Terraform"
+#  display_name                = "${var.nsx_rs_vars["t1_router_name"]}"
+#  failover_mode               = "PREEMPTIVE"
+#  edge_cluster_path            = "${data.nsxt_policy_edge_cluster.edge_cluster1.path}"
+#  tier0_path                  = data.nsxt_policy_tier0_gateway.tier0_router.path
+#  route_advertisement_types  = ["TIER1_STATIC_ROUTES","TIER1_CONNECTED","TIER1_NAT"]
+#    tag {
+#	scope = "${var.nsx_tag_scope}"
+#	tag = "${var.nsx_tag}"
+#    }
+#}
 #
 ## Create Web Tier NSX Segment
 #resource "nsxt_policy_segment" "tf-web" {
@@ -40,22 +40,22 @@ resource "nsxt_policy_tier1_gateway" "tier1_gw" {
 #}
 #
 ## Create a Security Group, using the tag specified in the terraform.tfvars file
-#resource "nsxt_policy_group" "tf-all" {
-#  description  = "NSGroup provisioned by Terraform"
-#  display_name = "tf-all"
-#  criteria {
-#      condition {
-#        member_type = "VirtualMachine"
-#        key = "Tag"
-#        operator = "EQUALS"
-#        value = "${var.nsx_tag_scope}|${var.nsx_tag}"
-#      }
-#  }
-#    tag {
-#	scope = "${var.nsx_tag_scope}"
-#	tag = "${var.nsx_tag}"
-#    }
-#}
+resource "nsxt_policy_group" "tf-all" {
+  description  = "NSGroup provisioned by Terraform"
+  display_name = "tf-all"
+  criteria {
+      condition {
+        member_type = "VirtualMachine"
+        key = "Tag"
+        operator = "EQUALS"
+        value = "${var.nsx_tag_scope}|${var.nsx_tag}"
+      }
+  }
+    tag {
+	scope = "${var.nsx_tag_scope}"
+	tag = "${var.nsx_tag}"
+    }
+}
 #
 ## Create custom Service for App that listens on port specified in terraform.tfvars
 #resource "nsxt_policy_service" "app" {
