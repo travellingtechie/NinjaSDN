@@ -9,6 +9,7 @@ ip_pools:
         end: 192.168.140.200
     dns_nameservers:
       - "191.168.110.10"
+    state: present
 #  - display_name: MyIPPool2
 #    description: This is my second IP pool
 #    cidr: 10.0.0.0/24
