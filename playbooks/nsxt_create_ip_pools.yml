@@ -7,7 +7,7 @@
     - nsx_config.yaml
   tasks:
     - name: Create IP Pools
-      vmware.nsxt_policy_ip_pool:
+      vmware.ansible_for_nsxt.nsxt_policy_ip_pool:
         hostname: "{{ nsx_hostname }}"
         username: "{{ nsx_username }}"
         password: "{{ nsx_password }}"
